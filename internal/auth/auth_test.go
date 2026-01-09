@@ -19,7 +19,6 @@ func TestGetAPIKey(t *testing.T) {
 		"empty-header": {header: http.Header{}, err: ErrNoAuthHeaderIncluded, want: ""},
 		"no-authheader": {header: http.Header{"ApiKey": []string{"ApiKey"}}, err: ErrNoAuthHeaderIncluded, want: ""},
 		"invalid-authheader": {header: http.Header{"Authorization": []string{"AuthKey"}}, err: errors.New("malformed authorization header"), want: ""},
-		"failing-test": {header: http.Header{}, err: nil, want: ""},
 	}
 
 	for name, tc := range tests {
